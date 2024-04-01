@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Backend+FrontEnd</title>
+    <script src="assignment.js" defer></script>
+    <style>
+      * {
+        padding: 5px;
+        margin: 5px;
+      }
+      div {
+        display: flex;
+        flex-direction: column;
+        width: 150px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <input id="rate" type="text" placeholder="rate" oninput="deBounce()" />
+      <input
+        id="principle"
+        type="text"
+        placeholder="principle"
+        oninput="deBounce()"
+      />
+      <input id="time" type="text" placeholder="time" oninput="deBounce()" />
+      <!-- <button class="btn">Click me</button> -->
+    </div>
+    <span>Total</span>
+    <h2 class="resTotal"></h2>
+    <span>interest</span>
+    <h2 class="resInterest"></h2>
+  </body>
+</html>
