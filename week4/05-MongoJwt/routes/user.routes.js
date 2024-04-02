@@ -66,7 +66,7 @@ router.get("/courses", userMiddleware, async (req, res) => {
 
 router.post("/courses/:courseId", userMiddleware, async (req, res) => {
   const courseId = req.params.courseId;
-  const username = req.headers.username;
+  const username = req.username;
   const updateUser = await User.updateOne(
     {
       username,
