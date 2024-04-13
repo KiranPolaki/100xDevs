@@ -40,7 +40,7 @@ app.put("/completed", async (req, res) => {
     return;
   }
 
-  await Todos.update(
+  await Todos.findOneAndUpdate(
     {
       _id: req.body.id,
     },
@@ -49,7 +49,7 @@ app.put("/completed", async (req, res) => {
     }
   );
   res.status(200).json({
-    msg: "Todo is completed",
+    msg: "Todo is completed and updated",
   });
 });
 
