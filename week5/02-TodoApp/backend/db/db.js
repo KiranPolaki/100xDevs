@@ -1,15 +1,15 @@
-import { Mongoose, Schema } from "mongoose";
+import mongoose, { Schema } from "mongoose";
 import { MONGO_URL } from "../config.js";
 
 // * Use this to connect DB here
 
-Mongoose.connect(`${MONGO_URL}`);
+mongoose.connect(`${MONGO_URL}`);
 
 const TodoSchema = new Schema(
   {
     title: {
-      typr: String,
-      required: true,
+      type: String,
+      required: [true, "Title is required Boss!"],
     },
     description: {
       type: String,
@@ -18,9 +18,7 @@ const TodoSchema = new Schema(
       type: Boolean,
     },
   },
-  {
-    timestamps: true,
-  }
+  { timestamps: true }
 );
 
-export const Todos = Mongoose.model("Todos", TodoSchema);
+export const Todos = mongoose.model("Todos", TodoSchema);
