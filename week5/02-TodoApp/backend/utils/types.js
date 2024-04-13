@@ -4,12 +4,12 @@ import zod from "zod";
 // const description = zod.string();
 // const id = zod.string();
 
-const createTodo = zod.objectUtil({
+const createTodo = zod.object({
   title: zod.string(),
   description: zod.string(),
 });
 
-const updateTodo = zod.objectUtil({
+const updateTodo = zod.object({
   id: zod.string(),
 });
 

@@ -6,13 +6,13 @@ const app = express();
 
 app.use(express.json());
 
-app.get("/", (req, res) => {
-  res.json({
-    msg: "Go to /todos to get all the todos",
-  });
-});
-
 app.post("/todo", (req, res) => {
+  const createPayload = req.body;
+  const parsedPayLoad = createTodo.safeParse(createPayload);
+  if (!parsedPayLoad) {
+    res.status(403).json("Invalid inputs");
+    return;
+  }
   res.status(200).json();
 });
 
@@ -21,7 +21,19 @@ app.get("/todos", (req, res) => {
 });
 
 app.put("/completed", (req, res) => {
-  res.json();
+  const updatePayload = req.body;
+  const parsedPayLoad = updateTodo.safeParse(updatePayload);
+  if (!parsedPayLoad) {
+    res.status(403).json("Invalid inputs");
+    return;
+  }
+  res.status(200).json();
+});
+
+app.get("/", (req, res) => {
+  res.json({
+    msg: "Go to /todos to get all the todos",
+  });
 });
 
 app.listen(PORT, () => {
