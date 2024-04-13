@@ -40,17 +40,25 @@ app.put("/completed", async (req, res) => {
     return;
   }
 
-  await Todos.findOneAndUpdate(
-    {
-      _id: req.body.id,
-    },
-    {
-      completed: true,
+  try {
+    const updatedTodo = await Todos.findOneAndUpdate(
+      { _id: req.body.id },
+      { completed: true },
+      { new: true }
+    );
+
+    if (!updatedTodo) {
+      res.status(404).json({ msg: "Todo not found" });
+      return;
     }
-  );
-  res.status(200).json({
-    msg: "Todo is completed and updated",
-  });
+
+    res.status(200).json({
+      msg: "Todo is completed and updated",
+      todo: updatedTodo,
+    });
+  } catch (err) {
+    res.status(500).json({ msg: "Server error", error: err.message });
+  }
 });
 
 app.get("/", (req, res) => {
