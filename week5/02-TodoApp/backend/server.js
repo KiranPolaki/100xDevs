@@ -2,10 +2,17 @@ import express from "express";
 import { PORT } from "./config.js";
 import { createTodo, updateTodo } from "./utils/types.js";
 import { Todos } from "./db/db.js";
+import cors from "cors";
 
 const app = express();
 
 app.use(express.json());
+app.use(cors());
+// app.use(
+//   cors({
+//     origin: "http://localhost:5173",
+//   })
+// );
 
 app.post("/todo", async (req, res) => {
   const createPayload = req.body;
@@ -29,7 +36,7 @@ app.post("/todo", async (req, res) => {
 app.get("/todos", async (req, res) => {
   // * incase we are fetching for a specific user then we pull there todos by mathcing id/username
   const allTodos = await Todos.find({});
-  res.json({ allTodos: allTodos });
+  res.json(allTodos);
 });
 
 app.put("/completed", async (req, res) => {
