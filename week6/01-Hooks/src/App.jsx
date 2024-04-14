@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./App.css";
 
+let count = 4;
+
 // * Assignment 2
 function App() {
   const [todos, setTodos] = useState([
@@ -24,7 +26,7 @@ function App() {
     setTodos([
       ...todos,
       {
-        id: 4,
+        id: count++,
         title: Math.random(),
         description: Math.random(),
       },
@@ -40,10 +42,10 @@ function App() {
       <div className="todoscontainer">
         {todos.map((todo) => {
           return (
-            <>
+            <div key={todo.id}>
               <h4>{todo.title}</h4>
               <h4>{todo.description}</h4>
-            </>
+            </div>
           );
         })}
       </div>
