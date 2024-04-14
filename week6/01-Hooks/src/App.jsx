@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import "./App.css";
 
 function App() {
@@ -10,6 +10,7 @@ function App() {
   );
 }
 
+// * Method 1 is to push down the state as low as possible
 function HeaderWithButton() {
   const [title, setTitle] = useState("Sai");
   return (
@@ -26,9 +27,10 @@ function HeaderWithButton() {
   );
 }
 
+// * Method 2 is react memo
 // eslint-disable-next-line react/prop-types
-function Header({ title }) {
+const Header = React.memo(function Header({ title }) {
   return <div>MMy name is {title}</div>;
-}
+});
 
 export default App;
