@@ -1,24 +1,45 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 
-// * Assignment 3 - Wrapper Components
+// * Hooks - you get access to lifecycle features like as the class based components, onComponentMount...
 function App() {
+  const [todos, setTodos] = useState([]);
+  async function fetchData() {
+    const res = await fetch("https://sum-server.100xdevs.com/todos");
+    const data = await res.json();
+    setTodos(data.todos);
+  }
+  useEffect(() => {
+    setInterval(() => {
+      fetchData();
+    }, 10000);
+  }, []);
+
   return (
-    <CardWrapper>
-      <TextComponent />
-    </CardWrapper>
+    <div>
+      {todos.map((todo) => (
+        <div key={todo.id}>{todo.title}</div>
+      ))}
+    </div>
   );
 }
 
-function TextComponent() {
-  return <div>hi</div>;
-}
-
-function CardWrapper({ children }) {
-  return <div>{children}</div>;
-}
+// * Assignment 3 - Wrapper Components
+// function App() {
+//   return (
+//     <CardWrapper>
+//       <TextComponent />
+//     </CardWrapper>
+//   );
+// }
+// function TextComponent() {
+//   return <div>hi</div>;
+// }
+// function CardWrapper({ children }) {
+//   return <div>{children}</div>;
+// }
 
 // * Assignment 2 - keys
 // let count = 4;
