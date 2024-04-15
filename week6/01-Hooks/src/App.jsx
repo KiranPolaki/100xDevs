@@ -6,11 +6,13 @@ import "./App.css";
 // * Hooks - you get access to lifecycle features like as the class based components, onComponentMount...
 function App() {
   const [todos, setTodos] = useState([]);
+
   async function fetchData() {
     const res = await fetch("https://sum-server.100xdevs.com/todos");
     const data = await res.json();
     setTodos(data.todos);
   }
+
   useEffect(() => {
     setInterval(() => {
       fetchData();
