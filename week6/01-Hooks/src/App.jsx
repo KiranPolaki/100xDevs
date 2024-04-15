@@ -1,59 +1,77 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import "./App.css";
 
-let count = 4;
-
-// * Assignment 2
+// * Assignment 3 - Wrapper Components
 function App() {
-  const [todos, setTodos] = useState([
-    {
-      id: 1,
-      title: "ajfhdaj",
-      description: "ajkdfhakjfd",
-    },
-    {
-      id: 2,
-      title: "ajfhdaj",
-      description: "ajkdfhakjfd",
-    },
-    {
-      id: 3,
-      title: "ajfhdaj",
-      description: "ajkdfhakjfd",
-    },
-  ]);
-  function addTodo() {
-    setTodos([
-      ...todos,
-      {
-        id: count++,
-        title: Math.random(),
-        description: Math.random(),
-      },
-    ]);
-  }
   return (
-    <>
-      <div className="inputfield">
-        <input type="text" placeholder="title" />
-        <input type="text" placeholder="description" />
-        <button onClick={addTodo}>Add</button>
-      </div>
-      <div className="todoscontainer">
-        {todos.map((todo) => {
-          return (
-            <div key={todo.id}>
-              <h4>{todo.title}</h4>
-              <h4>{todo.description}</h4>
-            </div>
-          );
-        })}
-      </div>
-    </>
+    <CardWrapper>
+      <TextComponent />
+    </CardWrapper>
   );
 }
 
-// * Assignment 1
+function TextComponent() {
+  return <div>hi</div>;
+}
+
+function CardWrapper({ children }) {
+  return <div>{children}</div>;
+}
+
+// * Assignment 2 - keys
+// let count = 4;
+// function App() {
+//   const [todos, setTodos] = useState([
+//     {
+//       id: 1,
+//       title: "ajfhdaj",
+//       description: "ajkdfhakjfd",
+//     },
+//     {
+//       id: 2,
+//       title: "ajfhdaj",
+//       description: "ajkdfhakjfd",
+//     },
+//     {
+//       id: 3,
+//       title: "ajfhdaj",
+//       description: "ajkdfhakjfd",
+//     },
+//   ]);
+//   function addTodo() {
+//     setTodos([
+//       ...todos,
+//       {
+//         id: count++,
+//         title: Math.random(),
+//         description: Math.random(),
+//       },
+//     ]);
+//   }
+//   return (
+//     <>
+//       <div className="inputfield">
+//         <input type="text" placeholder="title" />
+//         <input type="text" placeholder="description" />
+//         <button onClick={addTodo}>Add</button>
+//       </div>
+//       <div className="todoscontainer">
+//         {todos.map((todo) => {
+//           return (
+//             <div key={todo.id}>
+//               <h4>{todo.title}</h4>
+//               <h4>{todo.description}</h4>
+//             </div>
+//           );
+//         })}
+//       </div>
+//     </>
+//   );
+// }
+
+// * Assignment 1 - Rerendering
 // function App() {
 //   return (
 //     <div>
