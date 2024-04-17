@@ -30,11 +30,13 @@ function Button({ value, setId }) {
 function Todo({ id }) {
   const [todo, setTodo] = useState({});
   // * When anything in the dependency array changes the useEffect runs
+  // ! Must keep it empty if nothing or else infine no of req will be made
   useEffect(() => {
     axios.get(`https://sum-server.100xdevs.com/todo?id=${id}`).then((res) => {
       setTodo(res.data.todo);
     });
-  }, [id]);
+  }, []);
+
   return (
     <>
       <h1>{todo.title}</h1>
