@@ -5,7 +5,7 @@ import axios from "axios";
 import "./App.css";
 
 function App() {
-  const [todos, setTodos] = useState();
+  const [todos, setTodos] = useState([]);
   useEffect(() => {
     axios
       .get("https://sum-server.100xdevs.com/todos")
