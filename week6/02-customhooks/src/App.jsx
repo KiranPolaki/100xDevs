@@ -6,6 +6,8 @@ import "./App.css";
 
 // * lecture Code UseMemo
 // * Key note : Although both the useMemo and useEffect does the same thing like almost, but in useEffect a new useState variable has to be introduced
+// ! Use Memo is for memory
+// ! Use Effect id for Effects
 function App() {
   const [count, setCount] = useState(0);
   const [value, setValue] = useState(1);
