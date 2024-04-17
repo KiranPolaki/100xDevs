@@ -35,7 +35,7 @@ function Todo({ id }) {
     axios.get(`https://sum-server.100xdevs.com/todo?id=${id}`).then((res) => {
       setTodo(res.data.todo);
     });
-  }, []);
+  }, [id]);
 
   return (
     <>
