@@ -3,7 +3,7 @@
 function Cards({ name, description, creds, interests }) {
   return (
     <>
-      <div className="container">
+      <div className="card-container">
         <h3>{name}</h3>
         <p>{description}</p>
         <div className="interests-box">

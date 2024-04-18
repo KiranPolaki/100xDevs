@@ -5,13 +5,19 @@ function Input() {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   return (
-    <>
+    <div className="input-container">
       <form>
-        <h1>Add all the values</h1>
-        <input placeholder="Name..."></input>
-        <input placeholder="Tell me about you..."></input>
+        <input placeholder="Name..." type="text"></input>
+        <input placeholder="Tell me about you..." type="text"></input>
+        <input placeholder="Linkedin" type="text"></input>
+        <input placeholder="twitter" type="text"></input>
+        <input placeholder="Github" type="text"></input>
+        <input type="text" placeholder="interests"></input>
+        <input placeholder="interests" type="text"></input>
+        <input placeholder="interests" type="text"></input>
+        <input type="button" value="submit" />
       </form>
-    </>
+    </div>
   );
 }
 export { Input };
