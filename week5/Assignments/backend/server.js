@@ -1,8 +1,8 @@
 import express from "express";
-
-import { PORT } from "./config.js";
-
+import cors from "cors";
 const app = express();
+
+app.use(cors({}));
 
 app.use(express.json());
 
@@ -12,6 +12,4 @@ app.get("/", (req, res) => {
   });
 });
 
-app.listen(PORT || 3000, () => {
-  console.log(`Listening at http://localhost:${PORT}`);
-});
+export { app };
