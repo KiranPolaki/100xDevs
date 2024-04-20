@@ -1,14 +1,42 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React, { Suspense, useState } from "react";
 import "./App.css";
 import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
-import { Landing } from "./pages/Landing";
-import { Dashboard } from "./pages/Dashboard";
+import { Landing } from "./pages/Landing.jsx";
+import { Dashboard } from "./pages/Dashboard.jsx";
+
 const LazyLoad = React.lazy(() => import("./components/LazyLoad.jsx"));
 const LazyLoad2 = React.lazy(() => import("./components/LazyLoad2.jsx"));
 
-// * Routing & lazyLoad
+// * Prop Drilling
 function App() {
+  const [count, setCount] = useState(0);
+  return (
+    <>
+      <Count count={count} setCount={setCount} />
+    </>
+  );
+}
+function Count({ count, setCount }) {
+  return (
+    <>
+      {count}
+      <Buttons count={count} setCount={setCount} />
+    </>
+  );
+}
+function Buttons({ count, setCount }) {
+  return (
+    <>
+      <button onClick={setCount(count + 1)}>+</button>
+      <button onClick={setCount(count - 1)}>-</button>
+    </>
+  );
+}
+
+// * Routing & lazyLoad
+function App2() {
   return (
     <>
       <BrowserRouter>
@@ -37,7 +65,6 @@ function App() {
     </>
   );
 }
-
 function AppBar() {
   const navigate = useNavigate();
 
@@ -58,4 +85,12 @@ function AppBar() {
 // * Lazy load only show what need to be shown - incase have 20 pages instead of loading all the topages at the go, it would be better to load incrementally
 // * When we use Lazy load on multiple elements we face an issue called "component suspended while responding to synchronous input"
 // * So we use a Suspense API to wrap out lazy loaded elements or components
+
+// ! Prop Drilling
+// * Drilling down the props
+// * Basically we move prop to the Least commen parent when multiple comp access it
+// * By doing so we are creating a problem for ourselves like even though in few components in middle might not need new components but we stil pass them through them.
+// * This makes the code extreamly hard to read and complex.
+// * chill there is a way to fix it "Context Api"
+
 export default App;
