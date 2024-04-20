@@ -107,5 +107,6 @@ function AppBar() {
 // * With this we can give prop Rinnegan "teleportation" to other componenets
 // * At first, create a context
 // * Wrap anyone that want to use the teleported value inside a provider
-// * use it inside the componenets u need
+// * Use it inside the componenets u need
+
 export default App;
