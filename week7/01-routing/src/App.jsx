@@ -1,10 +1,11 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import React, { Suspense, useState } from "react";
+import React, { Suspense, useContext, useState } from "react";
 import "./App.css";
 import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
 import { Landing } from "./pages/Landing.jsx";
 import { Dashboard } from "./pages/Dashboard.jsx";
+import { CountContext } from "../context.jsx";
 
 const LazyLoad = React.lazy(() => import("./components/LazyLoad.jsx"));
 const LazyLoad2 = React.lazy(() => import("./components/LazyLoad2.jsx"));
@@ -14,23 +15,32 @@ function App() {
   const [count, setCount] = useState(0);
   return (
     <>
-      <Count count={count} setCount={setCount} />
+      <CountContext.Provider value={count}>
+        <Count count={count} setCount={setCount} />
+      </CountContext.Provider>
     </>
   );
 }
 function Count({ count, setCount }) {
   return (
     <>
-      {count}
-      <Buttons count={count} setCount={setCount} />
+      <CountRender />
+      <Buttons setCount={setCount} />
     </>
   );
 }
-function Buttons({ count, setCount }) {
+
+function CountRender() {
+  const count = useContext(CountContext);
+  return <>{count}</>;
+}
+
+function Buttons({ setCount }) {
+  const count = useContext(CountContext);
   return (
     <>
-      <button onClick={setCount(count + 1)}>+</button>
-      <button onClick={setCount(count - 1)}>-</button>
+      <button onClick={() => setCount(count + 1)}>+</button>
+      <button onClick={() => setCount(count - 1)}>-</button>
     </>
   );
 }
@@ -93,4 +103,9 @@ function AppBar() {
 // * This makes the code extreamly hard to read and complex.
 // * chill there is a way to fix it "Context Api"
 
+// ! Context Api's
+// * With this we can give prop Rinnegan "teleportation" to other componenets
+// * At first, create a context
+// * Wrap anyone that want to use the teleported value inside a provider
+// * use it inside the componenets u need
 export default App;
