@@ -1,14 +1,32 @@
 import mongoose, { connect } from "mongoose";
 import { MONGO_URL, DB_NAME } from "../constant.js";
 
-async function connectDB() {
-  try {
-    const connect = await mongoose.connect(`${MONGO_URL}/${DB_NAME}`);
-    console.log(`\n MongoDB connected !! DB HOST: ${connect.connection.host}`);
-  } catch (error) {
-    console.log("MongoDb connection Failed", error);
-    process.exit(1);
-  }
-}
+mongoose.connect(`${MONGO_URL}/${DB_NAME}`);
 
-export default connectDB;
+const cardSchema = new Schema(
+  {
+    name: {
+      type: String,
+    },
+    description: {
+      type: String,
+    },
+    linkedin: {
+      type: String,
+    },
+    twitter: {
+      type: String,
+    },
+    github: {
+      type: String,
+    },
+    interests: {
+      type: String,
+    },
+  },
+  { timestamps: true }
+);
+
+const Card = mongoose.model("Card", cardSchema);
+
+export { Card };
