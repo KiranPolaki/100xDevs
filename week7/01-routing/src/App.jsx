@@ -8,6 +8,7 @@ import { Dashboard } from "./pages/Dashboard";
 function App() {
   return (
     <>
+      <div style={{ backgroundColor: "black", color: "white" }}>topbar</div>
       <BrowserRouter>
         <Routes>
           <Route path="/dashboard" element={<Dashboard />} />
