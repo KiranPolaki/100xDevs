@@ -57,5 +57,5 @@ function AppBar() {
 // * One thing to remember when using the useRouter you can not use the useNavigate outside the BrowserRouter component
 // * Lazy load only show what need to be shown - incase have 20 pages instead of loading all the topages at the go, it would be better to load incrementally
 // * When we use Lazy load on multiple elements we face an issue called "component suspended while responding to synchronous input"
-// * So we use a Suspense API
+// * So we use a Suspense API to wrap out lazy loaded elements or components
 export default App;
