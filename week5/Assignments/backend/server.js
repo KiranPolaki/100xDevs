@@ -9,8 +9,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.get("/", async (req, res) => {
-  const cardsData = Card.find();
+app.get("/cards", async (req, res) => {
+  const cardsData = await Card.find();
   res.status(201).json({
     cardsData,
   });
@@ -38,6 +38,8 @@ app.post("/card", async (req, res) => {
     message: "Entry to the data base is made",
   });
 });
+
+// TODO: Delete and update must also be implemenetd
 
 app.listen(PORT, () => {
   console.log(`Listening at PORT http://localhost:${PORT}`);
