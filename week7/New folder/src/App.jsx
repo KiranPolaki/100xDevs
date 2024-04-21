@@ -1,6 +1,12 @@
-import { useContext, useMemo, useState } from "react"
+/* eslint-disable no-unused-vars */
+import { useContext, useMemo, useState } from "react";
 import { CountContext } from "./context";
-import { RecoilRoot, useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import {
+  RecoilRoot,
+  useRecoilState,
+  useRecoilValue,
+  useSetRecoilState,
+} from "recoil";
 import { countAtom, evenSelector } from "./store/atoms/count";
 
 function App() {
@@ -10,49 +16,66 @@ function App() {
         <Count />
       </RecoilRoot>
     </div>
-  )
+  );
 }
 
 function Count() {
   console.log("re-render");
-  return <div>
-    <CountRenderer />
-    <Buttons />
-  </div>
+  return (
+    <div>
+      <CountRenderer />
+      <Buttons />
+    </div>
+  );
 }
 
 function CountRenderer() {
   const count = useRecoilValue(countAtom);
-  
-  return <div>
-    <b>
-      {count}
-    </b>
-    <EvenCountRenderer />
-  </div>
+
+  return (
+    <div>
+      <b>{count}</b>
+      <EvenCountRenderer />
+    </div>
+  );
 }
 
 function EvenCountRenderer() {
   const isEven = useRecoilValue(evenSelector);
 
-  return <div>
-    {isEven ? "It is even" : null}
-  </div>
+  return <div>{isEven ? "It is even" : null}</div>;
 }
 
 function Buttons() {
   const setCount = useSetRecoilState(countAtom);
   console.log("buttons re-rendererd");
 
-  return <div>
-    <button onClick={() => {
-      setCount(count => count + 1)
-    }}>Increase</button>
+  return (
+    <div>
+      <button
+        onClick={() => {
+          setCount((count) => count + 1);
+        }}
+      >
+        Increase
+      </button>
 
-    <button onClick={() => {
-      setCount(count => count - 1)
-    }}>Decrease</button>
-  </div>
+      <button
+        onClick={() => {
+          setCount((count) => count - 1);
+        }}
+      >
+        Decrease
+      </button>
+    </div>
+  );
 }
 
-export default App
+export default App;
+
+// ! Why do we use Context Api's
+// * To make rendering more performent❌
+// * To make syntax good get rid of prop drilling✅
+
+// ! What if we wanht both then we have to use the State Management tools
+// * Statemanagement is a way we use for seperation of concerns

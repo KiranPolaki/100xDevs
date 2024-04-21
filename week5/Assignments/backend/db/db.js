@@ -1,4 +1,4 @@
-import mongoose, { connect } from "mongoose";
+import mongoose, { Schema } from "mongoose";
 import { MONGO_URL, DB_NAME } from "../constant.js";
 
 mongoose.connect(`${MONGO_URL}/${DB_NAME}`);
@@ -27,6 +27,4 @@ const cardSchema = new Schema(
   { timestamps: true }
 );
 
-const Card = mongoose.model("Card", cardSchema);
-
-export { Card };
+export const Card = mongoose.model("Card", cardSchema);
