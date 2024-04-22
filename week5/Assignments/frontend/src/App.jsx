@@ -1,5 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Cards } from "./components/Cards.jsx";
 import { Input } from "./components/Input.jsx";
 import "./App.css";
@@ -18,8 +19,17 @@ function App() {
     { id: 3, name: "manga" },
   ]);
 
+  // Todo: can also intoduce new state and implement search
+  const [cardData, setCardsData] = useState([]);
+
+  async function fetchCards() {
+    const res = await fetch("http://localhost:3000/cards");
+    const data = await res.json();
+    setCardsData(data.cardsData);
+  }
+
   useEffect(() => {
-    // ! fetch it here DB
+    fetchCards();
   }, []);
 
   return (
@@ -27,72 +37,10 @@ function App() {
       <Input />
       <div className="container">
         {/* input */}
-        <Cards
-          name={name}
-          description={description}
-          interests={interests}
-          creds={creds}
-        />
-        <Cards
-          name={name}
-          description={description}
-          interests={interests}
-          creds={creds}
-        />
-        <Cards
-          name={name}
-          description={description}
-          interests={interests}
-          creds={creds}
-        />
-        <Cards
-          name={name}
-          description={description}
-          interests={interests}
-          creds={creds}
-        />
-        <Cards
-          name={name}
-          description={description}
-          interests={interests}
-          creds={creds}
-        />
-        <Cards
-          name={name}
-          description={description}
-          interests={interests}
-          creds={creds}
-        />
-        <Cards
-          name={name}
-          description={description}
-          interests={interests}
-          creds={creds}
-        />
-        <Cards
-          name={name}
-          description={description}
-          interests={interests}
-          creds={creds}
-        />
-        <Cards
-          name={name}
-          description={description}
-          interests={interests}
-          creds={creds}
-        />
-        <Cards
-          name={name}
-          description={description}
-          interests={interests}
-          creds={creds}
-        />
-        <Cards
-          name={name}
-          description={description}
-          interests={interests}
-          creds={creds}
-        />
+        {cardData.map((card) => {
+          console.log(card);
+          <Cards name={card?.name} description={card?.description} />;
+        })}
       </div>
     </>
   );
