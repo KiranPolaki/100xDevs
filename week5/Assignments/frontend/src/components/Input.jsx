@@ -4,6 +4,11 @@ import { useState } from "react";
 function Input() {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
+  const [linkedin, setLinkedin] = useState("");
+  const [github, setGithub] = useState("");
+  const [twitter, setTwitter] = useState("");
+  const [interests, setInterests] = useState("");
+
   return (
     <div className="input-container">
       <form>
