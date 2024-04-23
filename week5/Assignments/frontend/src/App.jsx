@@ -36,11 +36,17 @@ function App() {
     <>
       <Input />
       <div className="container">
-        {/* input */}
-        {cardData.map((card) => {
-          console.log(card);
-          <Cards name={card?.name} description={card?.description} />;
-        })}
+        {cardData.map((card) => (
+          <Cards
+            key={card._id}
+            name={card.name}
+            description={card.description}
+            linkedin={card.linkedin}
+            twitter={card.twitter}
+            github={card.github}
+            interests={card.interests}
+          />
+        ))}
       </div>
     </>
   );
