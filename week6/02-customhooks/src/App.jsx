@@ -4,7 +4,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import axios from "axios";
 import "./App.css";
 
-// * Leacture Use CallBack
+// * Leacture UseCallback
 // * To Avoid the child components which depends on referncial equality and optimizing we do use this
 function App() {
   const [count, setCount] = useState(0);
