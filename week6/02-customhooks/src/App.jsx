@@ -39,7 +39,7 @@ function App3() {
 function App2() {
   const [count, setCount] = useState(0);
   const [value, setValue] = useState(1);
-  // ! this expensive function is rendering when eve rthe counter is increased as tehya r ein the same component
+  // ! this expensive function is rendering when ever the counter is increased as they are in the same component
   let c = useMemo(() => {
     console.log("Memo is called");
     let finalCOunt = 0;
