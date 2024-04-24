@@ -35,7 +35,7 @@ function App3() {
 // * lecture Code UseMemo
 // * Key note : Although both the useMemo and useEffect does the same thing like almost, but in useEffect a new useState variable has to be introduced
 // ! Use Memo is for memory
-// ! Use Effect id for Effects
+// ! Use Effect is for Effects
 function App2() {
   const [count, setCount] = useState(0);
   const [value, setValue] = useState(1);
