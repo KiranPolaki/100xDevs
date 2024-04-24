@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useMemo } from "react";
+
 // You have been given a list of items you shopped from the grocery store
 // You need to calculate the total amount of money you spent
 
@@ -9,11 +10,18 @@ export const Assignment3 = () => {
     { name: "Chips", value: 20 },
     { name: "Onion", value: 30 },
     { name: "Tomato", value: 30 },
+    { name: "Tomato", value: 30 },
     // Add more items as needed
   ]);
 
   // Your code starts here
-  const totalValue = 0;
+  const totalValue = useMemo(() => {
+    let val = 0;
+    items.map((item) => {
+      val += item.value;
+    });
+    return val;
+  }, [items]);
   // Your code ends here
   return (
     <div>
