@@ -18,7 +18,7 @@ function Cards({ name, description, linkedin, twitter, github, interests }) {
             <a href={twitter}>twitter</a>
           </button>
           <button>
-            <a href={github}>twitter</a>
+            <a href={github}>github</a>
           </button>
         </div>
       </div>

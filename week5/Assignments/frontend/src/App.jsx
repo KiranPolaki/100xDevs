@@ -8,6 +8,7 @@ import "./App.css";
 function App() {
   // Todo: can also intoduce new state and implement search
   const [cardData, setCardsData] = useState([]);
+  const [reload, setReload] = useState(false);
 
   async function fetchCards() {
     const res = await fetch("http://localhost:3000/cards");
@@ -17,11 +18,16 @@ function App() {
 
   useEffect(() => {
     fetchCards();
-  }, []);
+  }, [reload]);
+
+  function refetchData() {
+    setReload((prev) => !prev);
+  }
 
   return (
     <>
-      <Input />
+      {console.log("Rerended App")}
+      <Input refetchData={refetchData} />
       <div className="container">
         {cardData.map((card) => (
           <Cards
