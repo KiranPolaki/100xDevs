@@ -15,6 +15,7 @@ import {
 } from "./store/atoms";
 import { useMemo } from "react";
 
+// * Recoild Basics Completed
 function App() {
   return (
     <RecoilRoot>
