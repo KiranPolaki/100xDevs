@@ -41,6 +41,7 @@ function CountRenderer() {
 }
 
 function EvenCountRenderer() {
+  // * When we have derives states/ values what we do is we use it inside useMemo, same thing we can achieve with the Selector in Recoil
   const isEven = useRecoilValue(evenSelector);
 
   return <div>{isEven ? "It is even" : null}</div>;
