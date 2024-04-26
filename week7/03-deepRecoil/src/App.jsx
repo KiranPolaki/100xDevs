@@ -11,6 +11,7 @@ import {
   messagingAtom,
   networkAtom,
   notificationAtom,
+  totalNotification,
 } from "./store/atoms";
 import { useMemo } from "react";
 
@@ -40,6 +41,7 @@ function Mainapp() {
   // }, [networkCount, messageCount, jobsCount, notificationCount]);
 
   // * 3) We can use Selecter for derived values from the states of recoil
+  const total = useRecoilValue(totalNotification);
 
   return (
     <>
