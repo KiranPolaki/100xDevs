@@ -22,8 +22,8 @@ export function Component1({ name, age, place }) {
         <div className="line"></div>
         <div className="profile-stats">
           <ProfileComponent name={"Followers"} number={80000} />
-          <ProfileComponent name={"Likes"} number={80000} />
-          <ProfileComponent name={"Photos"} number={1000} />
+          <ProfileComponent name={"Likes"} number={8000} />
+          <ProfileComponent name={"Photos"} number={1200} />
         </div>
       </div>
     </>
@@ -31,10 +31,12 @@ export function Component1({ name, age, place }) {
 }
 
 function ProfileComponent({ name, number }) {
+  const num = number > 999 ? `${number / 1000}k` : number;
+
   return (
     <>
       <div>
-        <h4 className="number">{number}</h4>
+        <h4 className="number">{num}</h4>
         <p className="value">{name}</p>
       </div>
     </>
