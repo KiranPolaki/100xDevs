@@ -148,3 +148,20 @@
 .input4-btn:hover {
   background-color: #333;
 }
+
+.results-container {
+  padding: 10px;
+  line-height: 1.5;
+  max-height: 240px;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.results-container::-webkit-scrollbar-thumb {
+  display: none; /* Hide the thumb */
+}
+
+.results-container::-webkit-scrollbar-track {
+  display: none; /* Hide the track */
+}
