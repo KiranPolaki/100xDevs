@@ -41,7 +41,7 @@ export function Component2() {
   return (
     <>
       <div className="comp2-container">
-        <p className="color">color pick any</p>
+        <p className="color">Pick any color</p>
         <div className="buttons-cont">
           {gradient.map((gradient) => (
             <button
