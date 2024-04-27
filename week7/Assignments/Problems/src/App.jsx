@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Component1 } from "./components/Component1";
 import { Component2 } from "./components/Component2";
 import { Component4 } from "./components/Component4";
+import { Component5 } from "./components/Component5";
 import "./App.css";
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
       <Component1 name={"@saiiii_k"} age={"21"} place={"Hyderabad"} />
       <Component2 />
       <Component4 />
+      <Component5 />
     </div>
   );
 }

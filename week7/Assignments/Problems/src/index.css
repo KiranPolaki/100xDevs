@@ -17,7 +17,8 @@
 
 .comp1-container,
 .comp2-container,
-.comp4-container {
+.comp4-container,
+.comp5-container {
   margin: 10px;
   width: 290px;
   height: 330px;
@@ -55,6 +56,10 @@
   background-color: #cccc;
   background-size: cover;
   padding-top: 80px;
+}
+
+.git {
+  background-image: url("https://github.blog/wp-content/uploads/2023/05/1200x630-GitHub-Uni_23-Unfurl.png?fit=1200%2C630");
 }
 
 .avatar-container {
@@ -164,4 +169,23 @@
 
 .results-container::-webkit-scrollbar-track {
   display: none; /* Hide the track */
+}
+
+.graph-activity {
+  width: 250px;
+  height: 40%;
+}
+
+.dummy {
+  height: 200px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.github-link {
+  text-decoration: none;
+  color: red;
+  opacity: 110%;
 }

@@ -1,3 +1,4 @@
+// TODO: Enable typewritter effect
 import { useState } from "react";
 
 export function Component4() {
@@ -35,9 +36,15 @@ export function Component4() {
           Generate
         </button>
       </div>
-      <div className="results-container">{sentence}</div>
+      <div className="results-container">
+        {sentence === "" ? <Dummy /> : sentence}
+      </div>
     </div>
   );
+}
+
+function Dummy() {
+  return <p className="dummy">{"< sentence here >"}</p>;
 }
 
 export default Component4;
