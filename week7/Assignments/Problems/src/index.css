@@ -16,7 +16,8 @@
 }
 
 .comp1-container,
-.comp2-container {
+.comp2-container,
+.comp4-container {
   margin: 10px;
   width: 290px;
   height: 330px;
@@ -114,4 +115,36 @@
   opacity: 40%;
   font-weight: 300;
   font-size: 13px;
+}
+
+.input-container {
+  border: none;
+  height: 24%;
+  background-color: red;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  background-image: url("https://img.freepik.com/premium-vector/psychedelic-seamless-vector-pattern-surreal-distorted-stripes-abstract-wavy-background-metaverse-nft-style-optical-illusion-with-swirl-glitch-effect_335478-745.jpg");
+}
+
+.input-field {
+  width: 70px;
+  padding: 4px;
+  border: none;
+}
+
+.input4-btn {
+  width: 70px;
+  padding: 4px;
+  border: none;
+  cursor: pointer;
+  border-radius: 2px;
+  background-color: black;
+  color: antiquewhite;
+}
+
+.input4-btn:hover {
+  background-color: #333;
 }
