@@ -18,7 +18,8 @@
 .comp1-container,
 .comp2-container,
 .comp4-container,
-.comp5-container {
+.comp5-container,
+.comp6-container {
   margin: 10px;
   width: 290px;
   height: 330px;
