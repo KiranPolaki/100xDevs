@@ -1,5 +1,6 @@
-function great(firstname: string) {
+function great(firstname: string): string {
   console.log(`Hello ${firstname}`);
+  return "sai";
 }
 
 great("polaki");
