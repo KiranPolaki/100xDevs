@@ -1,73 +1,46 @@
 /* eslint-disable no-unused-vars */
-import { useState, useEffect } from "react";
-import "./App.css";
-import { Component } from "react";
+/* eslint-disable react/prop-types */
+import { useEffect, useState } from "react";
+import axios from "axios";
 
-// function App() {
-//   const [render, setRender] = useState(true);
-//   useEffect(() => {
-//     setTimeout(() => {
-//       setRender(!render);
-//     }, 10000);
-//   });
-//   return <>{render ? <MyComponent /> : <>Oops</>}</>;
-// }
+function useTodos() {
+  const [todos, setTodos] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-function App() {
-  return <MyComponent2 />;
+  useEffect(() => {
+    axios.get("https://sum-server.100xdevs.com/todos").then((res) => {
+      setTodos(res.data.todos);
+      setLoading(false);
+    });
+  }, []);
+
+  return { todos, loading };
 }
 
-function MyComponent() {
-  const [count, setCount] = useState(0);
-  useEffect(() => {
-    console.log("COmponent Mounted: When the component get into the picture");
-    return () => {
-      console.log(
-        "Component Unmounter: When the dep array changes or component is replaced then this will run once and changes for the new one"
-      );
-    };
-  }, []);
+function App() {
+  const { todos, loading } = useTodos();
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <>
-      {/* <p>{count}</p>
-      <button onClick={() => setCount((count) => count + 1)}>+</button> */}
-      inside from my Component
-      {console.log("inside from my Component")}
+      {todos.map((todo) => (
+        <Track key={todo.id} todo={todo} />
+      ))}
     </>
   );
 }
 
-class MyComponent1 extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { count: 0 };
-  }
-  incrementCount = () => {
-    this.setState({ count: this.state.count + 1 });
-  };
-  render() {
-    return (
-      <>
-        <p>{this.state.count}</p>
-        <button onClick={this.incrementCount}>+</button>
-      </>
-    );
-  }
-}
-
-class MyComponent2 extends Component {
-  componentDidMount() {
-    console.log("Component Mounted");
-  }
-
-  componentWillUnmount() {
-    console.log("unmount");
-  }
-
-  render() {
-    return <h1>Hi re</h1>;
-  }
+function Track({ todo }) {
+  return (
+    <div>
+      {todo.title}
+      <br />
+      {todo.description}
+    </div>
+  );
 }
 
 export default App;
