@@ -63,3 +63,12 @@ isLeagalAgeI({
   lastName: "kiran",
   age: 21,
 });
+
+// * Unions
+type StringOrNumber = string | number;
+function printId(id: StringOrNumber) {
+  console.log(`ID:${id}`);
+}
+
+printId(101);
+printId("202");
