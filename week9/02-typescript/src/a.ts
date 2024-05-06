@@ -69,6 +69,23 @@ type StringOrNumber = string | number;
 function printId(id: StringOrNumber) {
   console.log(`ID:${id}`);
 }
-
 printId(101);
 printId("202");
+
+// * Interseaction
+type Employee = {
+  name: string;
+  startDate: Date;
+};
+interface Manager {
+  name: string;
+  department: string;
+}
+type TechLead = Employee & Manager;
+// With type only we can do & and or, interfaces lets you extend/implement
+
+// * Arrays
+function ArrayInput(arr: number[]) {
+  return arr[0];
+}
+ArrayInput([1, 2, 3]);
