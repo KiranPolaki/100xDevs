@@ -89,3 +89,37 @@ function ArrayInput(arr: number[]) {
   return arr[0];
 }
 ArrayInput([1, 2, 3]);
+
+// * Enums
+type KeyInputs = "up" | "down" | "left" | "right";
+enum Direction {
+  Up, // 0
+  Down, //1
+  Left, //2
+  Right, //3
+}
+enum Direction2 {
+  Up = "up",
+  Down = "down",
+  Left = "left",
+  Right = "right",
+}
+function doSomething(keyPressed: Direction) {
+  if (keyPressed == Direction.Left) {
+    //whatever
+  }
+}
+doSomething(Direction.Left);
+doSomething(Direction.Up);
+
+// * Generics - for better infering
+function identity<T>(arg: T) {
+  return arg;
+}
+let output = identity<string>("mystring");
+function getFirstElement<T>(arr: T[]) {
+  return arr[0];
+}
+let arr = getFirstElement<string>(["kirat", "is", "singh"]);
+let arr2 = getFirstElement<number>([1, 2]);
+let arr3 = getFirstElement<string | number>([1, "sai", 2]);
