@@ -1,17 +1,17 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React, { Suspense, useContext, useState } from "react";
-import "./App.css";
 import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
 import { Landing } from "./pages/Landing.jsx";
 import { Dashboard } from "./pages/Dashboard.jsx";
 import { CountContext } from "../context.jsx";
+import "./App.css";
 
 const LazyLoad = React.lazy(() => import("./components/LazyLoad.jsx"));
 const LazyLoad2 = React.lazy(() => import("./components/LazyLoad2.jsx"));
 
 // * Prop Drilling
-function App() {
+function App3() {
   const [count, setCount] = useState(0);
   return (
     <>
@@ -46,7 +46,7 @@ function Buttons({ setCount }) {
 }
 
 // * Routing & lazyLoad
-function App2() {
+function App() {
   return (
     <>
       <BrowserRouter>
@@ -75,6 +75,7 @@ function App2() {
     </>
   );
 }
+
 function AppBar() {
   const navigate = useNavigate();
 
