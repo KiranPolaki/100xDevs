@@ -17,4 +17,10 @@ CREATE TABLE customer(
 INSERT INTO customer(first_name,last_name,email,company,street,city,state,zip,phone,birth_date,sex,date_entered)
 VALUES ('sai','kiran','sai@gmail.com','mcdonalds','5-291 hyderabad','hyderabad','TS','30084','990511900','2002-08-26','M', current_timestamp)
 
-// * creating 
+-- * Creating types
+CREATE TYPE sex_type as enum
+('M','F')
+
+-- * Alter table
+ALTER TABLE customer
+ALTER COLUMN sex TYPE sex_type USING sex::sex_type	
