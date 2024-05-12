@@ -75,3 +75,16 @@ CREATE TABLE sales_order(
 	name_on_card VARCHAR(100) NOT NULL,
 	id SERIAL PRIMARY KEY
 );
+
+CREATE TABLE sales_item(
+	item_id INTEGER REFERENCES item(id),
+	sales_order_id INTEGER REFERENCES sales_order(id),
+	quantity INTEGER NOT NULL,
+	discount NUMERIC(3,2) NULL DEFAULT 0,
+	taxable BOOLEAN NOT NULL DEFAULT FALSE,
+	sales_tax_raet NUMERIC(5,2) NOT NULL DEFAULT 0,
+	id SERIAL PRIMARY KEY
+);
+
+--  * Alter table
+ALTER TABLE sales_item ADD day_of_week VARCHAR(8);
