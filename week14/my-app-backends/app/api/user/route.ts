@@ -1,14 +1,10 @@
 import { PrismaClient } from "@prisma/client";
 import { NextRequest, NextResponse } from "next/server";
+import client from "@/db";
 
-const client = new PrismaClient();
-
-export function GET(req: NextRequest) {
-  return NextResponse.json({
-    email: "sai@gmail.com",
-    name: "saiiiik",
-  });
-}
+// export async function GET(req: NextRequest) {
+//  We dont need the get here cause it makes no sense to hit the server when server is inside the same box na - so move it
+// }
 
 export async function POST(req: NextRequest) {
   const body = await req.json();

@@ -1,17 +1,20 @@
-import axios from "axios";
+import client from "@/db";
 
 // * Server side data fetching
 async function fetchData() {
-  const res = await axios.get("http://localhost:3000/api/user");
-  return res.data;
+  const user = await client.user.findFirst();
+  return {
+    email: user?.email,
+    password: user?.password,
+  };
 }
 
 export default async function User() {
   const data = await fetchData();
   return (
     <>
-      <p>{data.name}</p>
-      <p>{data.email}</p>
+      <p>{data?.email}</p>
+      <p>{data?.password}</p>
     </>
   );
 }
